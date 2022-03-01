@@ -1,9 +1,10 @@
-name: Close Pull Request
+name: Check PR for release
 
 # only trigger on pull request closed events
 on:
   pull_request:
     types: [ closed ]
+  push:
 
 jobs:
   merge_job:
@@ -14,7 +15,8 @@ jobs:
     # Print event details
     - run: |
         echo PR #${{ github.event.number }} has been merged
-        if [ -e "$GITHUB_EVENT_PATH "]; then
+        echo "$GITHUB_EVENT_PATH"
+        if [ -e "$GITHUB_EVENT_PATH" ]; then
           echo "File exists"
           cat "$GITHUB_EVENT_PATH"
         fi
@@ -25,3 +27,8 @@ jobs:
     steps:
     - run: |
         echo PR #${{ github.event.number }} has been closed without being merged
+        echo "$GITHUB_EVENT_PATH"
+        if [ -e "$GITHUB_EVENT_PATH" ]; then
+          echo "File exists"
+          cat "$GITHUB_EVENT_PATH"
+        fi
