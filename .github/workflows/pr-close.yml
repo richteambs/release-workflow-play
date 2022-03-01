@@ -11,6 +11,7 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
+    # Print event details
     - run: |
         echo PR #${{ github.event.number }} has been merged
         if [ -e "$GITHUB_EVENT_PATH "]; then
