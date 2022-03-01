@@ -1,0 +1,20 @@
+name: build
+
+on: # rebuild any PRs and main / release branch changes
+  pull_request:
+  push:
+    branches:
+      - main
+      - 'release/*'
+
+jobs:
+  build:
+    name: Run build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Run tests
+        run: |
+          echo 'Ran the build!'
