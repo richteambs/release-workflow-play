@@ -1,4 +1,4 @@
-name: Close Pull Request
+name: Check PR for release
 
 # only trigger on pull request closed events
 on:
