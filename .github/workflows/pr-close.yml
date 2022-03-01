@@ -27,3 +27,8 @@ jobs:
     steps:
     - run: |
         echo PR #${{ github.event.number }} has been closed without being merged
+        echo "$GITHUB_EVENT_PATH"
+        if [ -e "$GITHUB_EVENT_PATH" ]; then
+          echo "File exists"
+          cat "$GITHUB_EVENT_PATH"
+        fi
