@@ -34,7 +34,7 @@ jobs:
         LABEL=$(gh api "repos/${{ github.repository }}/labels" --jq '.[] | select(.name == "auto-release")')
         if [ -z "$LABEL" ]; then
           echo "Label doesn't exist - creating"
-          gh api "repos/${{ github.repository }}/labels" -f name="auto-release" -f color="D4C5F9" -f description="This pull request was automatically created as part of the release process"
+          gh api "repos/${{ github.repository }}/labels" --silent -f name="auto-release" -f color="D4C5F9" -f description="This pull request was automatically created as part of the release process"
         else
           echo "Label exists"
         fi

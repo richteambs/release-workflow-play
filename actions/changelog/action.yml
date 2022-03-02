@@ -1,0 +1,15 @@
+name: 'Update changelog'
+description: 'Updates the changelog for the current release'
+inputs:
+  release-type:
+    description: 'The type of release (major, minor, patch, premajor, preminor, prepatch, or prerelease)'
+    required: true
+  prerelease-id:
+    description: 'The prerelease identifier, if required'
+    required: false
+outputs:
+  release-number:
+    description: 'The release number that was generated from the changelog contents and the input parameters.'
+runs:
+  using: 'node16'
+  main: ../dist/changelog/index.js
