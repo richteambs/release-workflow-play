@@ -1,0 +1,30 @@
+name: "Draft new release"
+
+on:
+  workflow_dispatch:
+    inputs:
+      release-type:
+        description: 'The version you want to release.'
+        required: true
+        type: choice
+        description: Release type
+        options:
+        - major
+        - minor
+        - patch
+        default: patch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: echo
+      run: | 
+        echo "choice is ${{ github.event.inputs.release-type }}"
+
+    - name: check-label
+      run: | 
+        gh api repos/${{ github.repository }}/labels
