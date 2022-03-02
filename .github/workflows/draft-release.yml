@@ -33,8 +33,11 @@ jobs:
 
     - name: check-label
       run: |
-        gh api "repos/richteambs/release-workflow-play/labels"
-        gh api "repos/${{ github.repository }}/labels"
-        gh api "repos/${{ github.repository }}/labels" --jq '.[] | select(.name == "wontfix")'
+        LABEL=gh api "repos/${{ github.repository }}/labels" --jq '.[] | select(.name == "auto-release")'
+        if [ -z "$LABEL" ]; then
+          echo "Label doesn't exist"
+        else
+          echo "Label exists"
+        fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
