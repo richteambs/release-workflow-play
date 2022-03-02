@@ -3,16 +3,22 @@ name: "Draft new release"
 on:
   workflow_dispatch:
     inputs:
-      release-type:
+      version:
         description: 'The version you want to release.'
         required: true
-        type: choice
-        description: Release type
-        options:
-        - major
-        - minor
-        - patch
-        default: patch
+# on:
+#   workflow_dispatch:
+#     inputs:
+#       release-type:
+#         description: 'The version you want to release.'
+#         required: true
+#         type: choice
+#         description: Release type
+#         options:
+#         - major
+#         - minor
+#         - patch
+#         default: patch
 
 jobs:
   build:
