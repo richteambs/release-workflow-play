@@ -4,7 +4,6 @@ name: Check PR for release
 on:
   pull_request:
     types: [ closed ]
-  push:
 
 jobs:
   merge_job:
