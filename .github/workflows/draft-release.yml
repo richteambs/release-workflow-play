@@ -10,10 +10,9 @@ on:
   workflow_dispatch:
     inputs:
       release-type:
-        description: 'The version you want to release.'
         required: true
         type: choice
-        description: Release type
+        description: 'Release type'
         options:
         - major
         - minor
