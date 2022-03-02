@@ -33,7 +33,7 @@ jobs:
 
     - name: check-label
       run: |
-        LABEL=gh api "repos/${{ github.repository }}/labels" --jq '.[] | select(.name == "auto-release")'
+        LABEL=$(gh api "repos/${{ github.repository }}/labels" --jq '.[] | select(.name == "auto-release")')
         if [ -z "$LABEL" ]; then
           echo "Label doesn't exist"
         else
