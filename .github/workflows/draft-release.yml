@@ -10,7 +10,6 @@ on:
   workflow_dispatch:
     inputs:
       release-type:
-        required: true
         type: choice
         description: 'Release type'
         options:
