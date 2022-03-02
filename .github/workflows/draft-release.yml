@@ -29,11 +29,12 @@ jobs:
       run: | 
         echo "Release type is ${{ github.event.inputs.release-type }}"
 
-    - name: check-label
+    - name: ensure-label
       run: |
         LABEL=$(gh api "repos/${{ github.repository }}/labels" --jq '.[] | select(.name == "auto-release")')
         if [ -z "$LABEL" ]; then
-          echo "Label doesn't exist"
+          echo "Label doesn't exist - creating"
+          gh api "repos/${{ github.repository }}/labels" -f name="auto-release" -f color="D4C5F9" -f description="This pull request was automatically created as part of the release process"
         else
           echo "Label exists"
         fi
